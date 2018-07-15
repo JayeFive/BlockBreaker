@@ -6,7 +6,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour {
 
     // config params
-    [SerializeField] Paddle paddle1;
+    Paddle paddle1;
     [SerializeField] float startingXVector = 2.0f;
     [SerializeField] float startingYVector = 10.0f;
 
@@ -19,6 +19,7 @@ public class Ball : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        paddle1 = GameObject.FindObjectOfType<Paddle>();
         paddleToBallVector = transform.position - paddle1.transform.position;
 	}
 	
