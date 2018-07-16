@@ -1,12 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GamePlay : MonoBehaviour {
 
+    public int lives = 5;
     public int blockCount;
-    
 
     void Start ()
     {
@@ -19,6 +20,13 @@ public class GamePlay : MonoBehaviour {
         }
 
         blockCount = GameObject.FindGameObjectsWithTag("Block").Length;
+
+        spawnLifeBalls();
+    }
+
+    private void spawnLifeBalls()
+    {
+
     }
 
     public void CheckForSceneWin ()
