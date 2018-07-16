@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Paddle.cs" />
      <Compile Include="Assets\Scripts\PaddleCollider.cs" />
      <Compile Include="Assets\Scripts\SceneLoader.cs" />
+     <Compile Include="Assets\Scripts\StartButton.cs" />
      <Compile Include="Assets\SpriteTrail\SCRIPT\CORE\Attributes.cs" />
      <Compile Include="Assets\SpriteTrail\SCRIPT\CORE\SpriteTrail.cs" />
      <Compile Include="Assets\SpriteTrail\SCRIPT\CORE\TrailElement.cs" />

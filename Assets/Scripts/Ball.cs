@@ -10,62 +10,51 @@ public class Ball : MonoBehaviour {
     [SerializeField] float startingYVector = 10.0f;
     [SerializeField] int sideForce = 500;
     [SerializeField] float maxSpeed = 17f;
-    [SerializeField] Rigidbody2D rb;
-
+    [SerializeField] Rigidbody2D rigidBody2d;
 
     // state
     bool hasStarted = false;
 
     // paddle position data
-    Paddle paddle1;
+    Paddle paddle;
     float paddleXPos;
     Vector2 paddleToBallVector;
 
 	// Use this for initialization
 	void Start ()
     {
-        paddle1 = GameObject.FindObjectOfType<Paddle>();
-        paddleToBallVector = transform.position - paddle1.transform.position;
-        rb = GetComponent<Rigidbody2D>();
+        paddle = GameObject.FindObjectOfType<Paddle>();
+        paddleToBallVector = transform.position - paddle.transform.position;
+        rigidBody2d = GetComponent<Rigidbody2D>();
 
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-
-        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+        rigidBody2d.velocity = Vector2.ClampMagnitude(rigidBody2d.velocity, maxSpeed);
 
         if(!hasStarted)
         {
             LockBallToPaddle();
             LaunchOnMouseClick();
         }
+
         Vector2 ballPos = new Vector2(transform.position.x, transform.position.y);
-
-        //if (rb.velocity.magnitude > maxSpeed)
-        //{
-        Debug.Log(rb.velocity.magnitude);
-        //    rb.velocity = rb.velocity.normalized * maxSpeed;
-        //}
-    }
-
-    void FixedUpdate ()
-    {
     }
 
     private void LaunchOnMouseClick()
     {
         if (Input.GetMouseButton(0))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(startingXVector, startingYVector);
+            rigidBody2d.velocity = new Vector2(startingXVector, startingYVector);
             hasStarted = true;
         }
     }
 
     private void LockBallToPaddle()
     {
-        Vector2 paddlePos = new Vector2(paddle1.transform.position.x, paddle1.transform.position.y);
+        Vector2 paddlePos = new Vector2(paddle.transform.position.x, paddle.transform.position.y);
         transform.position = paddlePos + paddleToBallVector;
     }
 
@@ -73,9 +62,9 @@ public class Ball : MonoBehaviour {
     {
         if (collision.gameObject.tag.Equals("Paddle"))
         {
-            paddleXPos = paddle1.transform.position.x;
+            paddleXPos = paddle.transform.position.x;
             Vector2 distanceFromPaddleCenter = new Vector2(transform.position.x - paddleXPos, 100 / sideForce);
-            rb.AddForce(distanceFromPaddleCenter * sideForce);
+            rigidBody2d.AddForce(distanceFromPaddleCenter * sideForce);
         }
     }
 }
