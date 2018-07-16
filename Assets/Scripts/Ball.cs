@@ -9,11 +9,11 @@ public class Ball : MonoBehaviour {
     [SerializeField] float startingXVector = 2.0f;
     [SerializeField] float startingYVector = 10.0f;
     [SerializeField] int sideForce = 500;
-    [SerializeField] float maxSpeed = 17f;
+    [SerializeField] float maxSpeed = 15f;
     [SerializeField] Rigidbody2D rigidBody2d;
 
     // state
-    bool hasStarted = false;
+    public bool hasStarted = false;
 
     // paddle position data
     Paddle paddle;
@@ -40,7 +40,7 @@ public class Ball : MonoBehaviour {
             LaunchOnMouseClick();
         }
 
-        Vector2 ballPos = new Vector2(transform.position.x, transform.position.y);
+        //Vector2 ballPos = new Vector2(transform.position.x, transform.position.y);
     }
 
     private void LaunchOnMouseClick()

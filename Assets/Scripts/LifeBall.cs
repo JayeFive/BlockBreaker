@@ -14,7 +14,7 @@ public class LifeBall : MonoBehaviour {
 
         for (int i = 0; i < gamePlay.lives; i++)
         {
-            Instantiate(lifeBall, new Vector3(0.5f + i / 2.0f, 11.25f), Quaternion.identity);
+            Instantiate(lifeBall, new Vector3(0.5f + i / 2.0f, 11.5f), Quaternion.identity);
         }
     }
 
