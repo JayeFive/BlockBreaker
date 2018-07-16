@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GamePlay : MonoBehaviour {
 
-    public int lives = 5;
+    public int extraLives = 3;
     public int blockCount;
+    public Text blockCounterText;
 
     void Start ()
     {
@@ -20,13 +22,11 @@ public class GamePlay : MonoBehaviour {
         }
 
         blockCount = GameObject.FindGameObjectsWithTag("Block").Length;
-
-        spawnLifeBalls();
     }
 
-    private void spawnLifeBalls()
+    private void Update()
     {
-
+        blockCounterText.text = blockCount.ToString();
     }
 
     public void CheckForSceneWin ()

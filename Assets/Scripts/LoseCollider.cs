@@ -18,8 +18,15 @@ public class LoseCollider : MonoBehaviour {
 
     private void UpdateLives()
     {
-        gamePlay.lives--;
-        lifeBall.RemoveLifeBall();
+        if (gamePlay.extraLives > 0)
+        {
+            gamePlay.extraLives--;
+            lifeBall.RemoveLifeBall();
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings - 1);
+        }
     }
 
     private void ResetPaddleAndBall()
