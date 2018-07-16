@@ -7,8 +7,8 @@ public class Paddle : MonoBehaviour {
     // Config params
 
     [SerializeField] float screenWidthInUnits = 16.0f;
-    [SerializeField] float clamp_left = 1f;
-    [SerializeField] float clamp_right = 15f;
+    [SerializeField] float clamp_left = 1.3f;
+    [SerializeField] float clamp_right = 14.7f;
 
     // Update is called once per frame
     void Update () {

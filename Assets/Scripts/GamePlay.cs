@@ -9,6 +9,7 @@ public class GamePlay : MonoBehaviour {
 
     void Start ()
     {
+        Cursor.visible = false;
         blockCount = GameObject.FindGameObjectsWithTag("Block").Length;
     }
 
