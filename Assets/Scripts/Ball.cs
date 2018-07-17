@@ -7,9 +7,9 @@ public class Ball : MonoBehaviour {
 
     // config params
     [SerializeField] float startingXVector = 2.0f;
-    [SerializeField] float startingYVector = 10.0f;
     [SerializeField] int sideForce = 500;
     [SerializeField] float maxSpeed = 15f;
+    [SerializeField] float yForce = 0.3f;
     Rigidbody2D rb2d;
 
     // state
@@ -47,7 +47,7 @@ public class Ball : MonoBehaviour {
     {
         if (Input.GetMouseButton(0))
         {
-            rb2d.velocity = new Vector2(startingXVector, startingYVector);
+            rb2d.velocity = new Vector2(startingXVector, maxSpeed);
             hasStarted = true;
         }
     }
@@ -63,7 +63,7 @@ public class Ball : MonoBehaviour {
         if (collision.gameObject.tag.Equals("Paddle"))
         {
             paddleXPos = paddle.transform.position.x;
-            Vector2 distanceFromPaddleCenter = new Vector2(transform.position.x - paddleXPos, 100 / sideForce);
+            Vector2 distanceFromPaddleCenter = new Vector2(transform.position.x - paddleXPos, yForce);
             rb2d.AddForce(distanceFromPaddleCenter * sideForce);
         }
     }
