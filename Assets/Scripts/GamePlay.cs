@@ -26,7 +26,10 @@ public class GamePlay : MonoBehaviour {
 
     private void Update()
     {
-        blockCounterText.text = blockCount.ToString();
+        if (blockCounterText != null)
+        {
+            blockCounterText.text = blockCount.ToString();
+        }
     }
 
     public void CheckForSceneWin ()
