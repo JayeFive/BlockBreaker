@@ -1,19 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TapeStop : MonoBehaviour {
 
     public float startingPitch = 1;
     public float timeToChange = 1;
-    bool isTapeStopping = false;
-    bool isTapeStarting = false;
+    public bool isTapeStopping = false;
+    public bool isTapeStarting = false;
     AudioSource bgMusic;
 
 	// Use this for initialization
 	void Start () {
         bgMusic = FindObjectOfType<MusicPlayer>().GetComponent<AudioSource>();
         bgMusic.pitch = startingPitch;
+
+        if (SceneManager.GetActiveScene().buildIndex == (SceneManager.sceneCountInBuildSettings) - 1)
+        {
+            isTapeStopping = true;
+        }
 	}
 	
 	// Update is called once per frame
