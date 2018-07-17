@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour {
     [SerializeField] float startingYVector = 10.0f;
     [SerializeField] int sideForce = 500;
     [SerializeField] float maxSpeed = 15f;
-    [SerializeField] Rigidbody2D rb2d;
+    [SerializeField] Rigidbody2D rigidBody2d;
 
     // state
     public bool hasStarted = false;
@@ -25,14 +25,14 @@ public class Ball : MonoBehaviour {
     {
         paddle = GameObject.FindObjectOfType<Paddle>();
         paddleToBallVector = transform.position - paddle.transform.position;
-        rb2d = GetComponent<Rigidbody2D>();
+        rigidBody2d = GetComponent<Rigidbody2D>();
 
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        rb2d.velocity = Vector2.ClampMagnitude(rb2d.velocity, maxSpeed);
+        rigidBody2d.velocity = Vector2.ClampMagnitude(rigidBody2d.velocity, maxSpeed);
 
         if(!hasStarted)
         {
@@ -47,7 +47,7 @@ public class Ball : MonoBehaviour {
     {
         if (Input.GetMouseButton(0))
         {
-            rb2d.velocity = new Vector2(startingXVector, startingYVector);
+            rigidBody2d.velocity = new Vector2(startingXVector, startingYVector);
             hasStarted = true;
         }
     }
@@ -62,14 +62,9 @@ public class Ball : MonoBehaviour {
     {
         if (collision.gameObject.tag.Equals("Paddle"))
         {
-            AddForce();
+            paddleXPos = paddle.transform.position.x;
+            Vector2 distanceFromPaddleCenter = new Vector2(transform.position.x - paddleXPos, 100 / sideForce);
+            rigidBody2d.AddForce(distanceFromPaddleCenter * sideForce);
         }
-    }
-
-    private void AddForce()
-    {
-        paddleXPos = paddle.transform.position.x;
-        Vector2 distanceFromPaddleCenter = new Vector2(transform.position.x - paddleXPos, 0);
-        rb2d.AddForce(distanceFromPaddleCenter * sideForce);
     }
 }
