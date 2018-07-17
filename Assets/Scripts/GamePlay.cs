@@ -13,12 +13,12 @@ public class GamePlay : MonoBehaviour {
 
     void Start ()
     {
-        Cursor.visible = false;
+        Cursor.visible = true;
 
         Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name == "StartMenu" || currentScene.name == "GameOver")
+        if (currentScene.buildIndex == 1)
         {
-            Cursor.visible = true;
+            Cursor.visible = false;
         }
 
         blockCount = GameObject.FindGameObjectsWithTag("Block").Length;

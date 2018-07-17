@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System;
+using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler {
-
-    [SerializeField] SceneLoader sceneLoader;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -23,6 +21,6 @@ public class StartButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        sceneLoader.LoadNextScene();
+        SceneManager.LoadScene(1);
     }
 }
