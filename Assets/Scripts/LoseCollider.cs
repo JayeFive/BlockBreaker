@@ -9,9 +9,17 @@ public class LoseCollider : MonoBehaviour {
     [SerializeField] LifeBall lifeBall;
     [SerializeField] Ball ball;
     [SerializeField] Paddle paddle;
+    [SerializeField] TapeStop tapeStop;
+
+    void Start ()
+    {
+        tapeStop.bgMusic = FindObjectOfType<AudioSource>();
+        Debug.Log(tapeStop.bgMusic.volume);
+    }
 
     private void OnTriggerEnter2D (Collider2D collision)
     {
+        tapeStop.InitiateTapeStop();
         UpdateLives();
         ResetPaddleAndBall();
     }
