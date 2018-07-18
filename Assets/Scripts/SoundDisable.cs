@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SoundDisable : MonoBehaviour
 {
@@ -14,8 +15,11 @@ public class SoundDisable : MonoBehaviour
     void Start ()
     {
         bgMusic = FindObjectOfType<MusicPlayer>().GetComponent<AudioSource>();
-        pop = FindObjectOfType<Ball>().GetComponent<AudioSource>();
-        bounce = FindObjectOfType<Paddle>().GetComponent<AudioSource>();
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            pop = FindObjectOfType<Ball>().GetComponent<AudioSource>();
+            bounce = FindObjectOfType<Paddle>().GetComponent<AudioSource>();
+        }
     }
 
     public void DisableSound()

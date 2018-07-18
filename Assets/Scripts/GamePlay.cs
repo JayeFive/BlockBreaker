@@ -36,7 +36,6 @@ public class GamePlay : MonoBehaviour {
     {
         if (blockCount == 0)
         {
-            Debug.Log("Checked for win");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
