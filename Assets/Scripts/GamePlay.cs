@@ -15,11 +15,11 @@ public class GamePlay : MonoBehaviour {
     {
         Cursor.visible = true;
 
-        Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.buildIndex == 1)
-        {
-            Cursor.visible = false;
-        }
+        //Scene currentScene = SceneManager.GetActiveScene();
+        //if (currentScene.buildIndex == 1)
+        //{
+        //    Cursor.visible = false;
+        //}
 
         blockCount = GameObject.FindGameObjectsWithTag("Block").Length;
     }
